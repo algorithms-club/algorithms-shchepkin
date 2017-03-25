@@ -1,9 +1,11 @@
 'use strict';
 
 let bubbleSort = require('./bubble-sort');
+let coverByTile = require('./entry-test/coverByTile');
 
 let algolib = {
-    bubbleSort
+    bubbleSort,
+    coverByTile
 }
 
 module.exports = algolib;
