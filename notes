@@ -1,0 +1,11 @@
+install nodejs
+install sublime
+
+npm init - create project
+npm test - run tests
+==============================
+метод выдающий количество элементов в компоненте и к какому компоненту элемент относится
+unionFind.count() - кол-во компонентов (т.е. кол-во уникальных значений, просто ищем элементы в которых позиция элемента равна его значению)
+unionFind.component()
+
+http://travis-ci.org/
