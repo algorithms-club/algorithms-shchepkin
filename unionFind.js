@@ -38,17 +38,11 @@ class UnionFind {
 		return this._elements[a] === this._elements[b];
 	}
 
-	count(a) {
-
-		if (isNaN(this._elements[a])){
-			return 0;
-		}
-
-		let value = this._elements[a];
+	count() {
 		let count = 0;
-
-		for (let i = 0; i < this._elements.length; i++) {
-			if(this._elements[i] == value){
+		
+		for (let i = 1; i < this._elements.length; i++) {
+			if(this._elements[i] == i){
 				count++;
 			}
 		}
