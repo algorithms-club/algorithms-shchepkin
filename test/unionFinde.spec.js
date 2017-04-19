@@ -49,22 +49,71 @@ describe.only('#unionFind', function() {
 
 	});
 
-	it('should #count return 0 if component undefined', function() {
+	it('should #component return which component has element', function() {
 		let unionFind = new algolib.UnionFind();
 
-		let numElementsInComponent = unionFind.count(100);
-		numElementsInComponent.should.be.eql(0);
+		unionFind.connect(1, 4);
+		unionFind.connect(4, 5);
+
+		let whichComponentHasElement = unionFind.component(1);
+		whichComponentHasElement.should.be.eql(5);
 
 	});
-
-	it('should #count return number of elements in component', function() {
+	
+	it('should #count return number of existing components', function() {
 		let unionFind = new algolib.UnionFind();
 
 		unionFind.connect(1, 4);
 		unionFind.connect(2, 4);
 
-		let numElementsInComponent = unionFind.count(4);
-		numElementsInComponent.should.be.eql(3);
+		let numOfComponents = unionFind.count();
+        numOfComponents.should.be.eql(1);
+
+	});
+
+	it('should #count return number of existing components', function() {
+		let unionFind = new algolib.UnionFind();
+
+		unionFind.connect(1, 4);
+		unionFind.connect(2, 4);
+		unionFind.connect(3, 5);
+
+		let numOfComponents = unionFind.count();
+        numOfComponents.should.be.eql(2);
+
+	});
+
+	it('should #count return number of existing components', function() {
+		let unionFind = new algolib.UnionFind();
+
+		unionFind.connect(1, 4);
+		unionFind.connect(2, 4);
+		unionFind.connect(3, 5);
+		unionFind.connect(5, 4);
+
+		let numOfComponents = unionFind.count();
+        numOfComponents.should.be.eql(1);
+
+	});
+
+	it('should #count return number of existing components', function() {
+		let unionFind = new algolib.UnionFind();
+
+		unionFind.connect(1, 5);
+		unionFind.connect(2, 4);
+		unionFind.connect(3, 10);
+		unionFind.connect(6, 8);
+
+		let numOfComponents = unionFind.count();
+        numOfComponents.should.be.eql(4);
+
+	});
+
+	it('should #count return number of existing components', function() {
+		let unionFind = new algolib.UnionFind();
+
+		let numOfComponents = unionFind.count();
+        numOfComponents.should.be.eql(0);
 
 	});
 
