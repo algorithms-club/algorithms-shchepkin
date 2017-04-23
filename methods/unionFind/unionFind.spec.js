@@ -2,7 +2,7 @@
 
 const algolib = require('../index.js');
 
-describe.only('#unionFind', function() {
+describe('#unionFind', function() {
 	
 	it('should create proper data structure', function() {
 		let unionFind = new algolib.UnionFind();
