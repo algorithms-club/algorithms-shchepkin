@@ -24,36 +24,6 @@ class LinkedList {
         return this._elements;
     }
 
-    getNextLink(a){
-        let obj = this._elements[a];
-        return obj.next;
-    }
-
-    getPrewLink(a){
-        let obj = this._elements[a];
-        return obj.prew;
-    }
-
-    get(a){
-        let obj = this._elements[a];
-        return obj.value;
-    }
-
-    getLastElementNumber(){
-        if (this.last < 0){
-            return NaN;
-        }else return this.last;
-    }
-
-
-    checkIsLast(a){
-        if ("next" in a){
-            return false;
-        }else {
-            return true;
-        }
-    }
-
     del(a){
         if (a > this.last || a < 0){return NaN}
 
@@ -63,17 +33,11 @@ class LinkedList {
             this.last = -1;
 
         }else {
-            if (this.checkIsLast(objForDelete)) {
+            if (LinkedList.checkIsLast(objForDelete)) {
                 if ("prew" in objForDelete) {
-                    let obj = this._elements[objForDelete.prew];
-                    delete obj.next;
-                    this._elements[objForDelete.prew] = obj;
-                    this.last = objForDelete.prew;
+                    this.addNextWithLast(objForDelete.prew)
                 } else {
-                    let obj = this._elements[a - 1];
-                    delete obj.next;
-                    this._elements[a - 1] = obj;
-                    this.last = a - 1;
+                    this.addNextWithLast(a - 1)
                 }
             } else {
                 if ("prew" in objForDelete) {
@@ -98,6 +62,38 @@ class LinkedList {
         }
 
         delete this._elements[a];
+    }
+
+    addNextWithLast(a){
+        let obj = this._elements[a];
+        delete obj.next;
+        this._elements[a] = obj;
+        this.last = a;
+    }
+
+    getNextLink(a){
+        let obj = this._elements[a];
+        return obj.next;
+    }
+
+    getPrewLink(a){
+        let obj = this._elements[a];
+        return obj.prew;
+    }
+
+    get(a){
+        let obj = this._elements[a];
+        return obj.value;
+    }
+
+    getLastElementNumber(){
+        if (this.last < 0){
+            return NaN;
+        }else return this.last;
+    }
+
+    static checkIsLast(a){
+        return !("next" in a);
     }
 }
 
