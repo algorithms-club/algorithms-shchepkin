@@ -2,32 +2,61 @@
 
 const algolib = require('./index.js');
 
-class linkedList {
+class LinkedList {
 
     constructor(){
         this._elements = [];
+        this.last = -1;
     }
 
-    connect(a, b) {
+    push(value){
+        this.last++;
+        let obj = {};
 
-        if(this.isConnected(a, b)) {
-            return;
+        obj.value = value;
+        this._elements[this.last] = obj;
+
+        if (this.last > 0){
+           obj = this._elements[this.last - 1];
+           obj.next =  this.last;
+           this._elements[this.last - 1] = obj;
         }
 
-        this._elements[a] = isNaN(this._elements[a]) ? a : this._elements[a];
-        this._elements[b] = isNaN(this._elements[b]) ? b : this._elements[b];
+        return this._elements;
+    }
 
-        let componentA = this._elements[a];
-        let componentB = this._elements[b];
+    getNextLink(a){
+        let obj = this._elements[a];
+        return obj.next;
+    }
 
-        for (let i = 0; i < this._elements.length; i++) {
-            if(this._elements[i] == componentA){
-                this._elements[i] = componentB;
-            }
+    get(a){
+        let obj = this._elements[a];
+        return obj.value;
+    }
+
+    getLastElementNumber(){
+        if (this.last < 0){
+            return NaN;
+        }else return this.last;
+    }
+
+    del(a){
+        if (a > this.last || a < 0){return NaN}
+        let objOld = this._elements[a];
+
+        delete this._elements[a];
+
+        if (this.last === 0) {
+            this.last = -1;
+
+        }else if (a !== 0){
+           let obj = this._elements[a - 1];
+           obj.next =  objOld.next;
+           this._elements[a - 1] = obj;
         }
-
     }
 
 }
 
-module.exports = linkedList;
+module.exports = LinkedList;
