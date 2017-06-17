@@ -24,10 +24,10 @@ class LinkedList {
         return this._elements;
     }
 
-    del(a){
-        if (a > this.last || a < 0){return NaN}
+    del(elementNum){
+        if (elementNum > this.last || a < elementNum){return NaN}
 
-        let objForDelete = this._elements[a];
+        let objForDelete = this._elements[elementNum];
 
         if (this.last === 0) {
             this.last = -1;
@@ -37,7 +37,7 @@ class LinkedList {
                 if ("prew" in objForDelete) {
                     this.addNextWithLast(objForDelete.prew)
                 } else {
-                    this.addNextWithLast(a - 1)
+                    this.addNextWithLast(elementNum - 1)
                 }
             } else {
                 if ("prew" in objForDelete) {
@@ -50,18 +50,18 @@ class LinkedList {
                     this._elements[objForDelete.next] = obj;
 
                 } else {
-                    let obj = this._elements[a - 1];
+                    let obj = this._elements[elementNum - 1];
                     obj.next = objForDelete.next;
-                    this._elements[a - 1] = obj;
+                    this._elements[elementNum - 1] = obj;
 
-                    obj = this._elements[a + 1];
-                    obj.prew = a - 1;
-                    this._elements[a + 1] = obj;
+                    obj = this._elements[elementNum + 1];
+                    obj.prew = elementNum - 1;
+                    this._elements[elementNum + 1] = obj;
                 }
             }
         }
 
-        delete this._elements[a];
+        delete this._elements[elementNum];
     }
 
     addNextWithLast(a){

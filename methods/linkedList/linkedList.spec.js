@@ -2,7 +2,7 @@
 
 const algolib = require('../index.js');
 
-describe.only('#linkedList', function() {
+describe('#linkedList', function() {
 
     it('should create proper data structure', function() {
         let linkedList = new algolib.LinkedList();
@@ -41,7 +41,7 @@ describe.only('#linkedList', function() {
         lastElementNum.should.be.eql(5);
     });
 
-    it('should #get returns valid value', function() {
+    it('should #find returns valid value', function() {
         let linkedList = new algolib.LinkedList();
 
         linkedList.push(5);
@@ -108,7 +108,7 @@ describe.only('#linkedList', function() {
         next.should.be.eql(2);
     });
 
-    it('should #get returns valid value after exchanging link to next element', function() {
+    it('should #find returns valid value after exchanging link to next element', function() {
         let linkedList = new algolib.LinkedList();
 
         linkedList.push(23);
