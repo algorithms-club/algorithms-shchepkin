@@ -75,11 +75,15 @@ class Llrb {
 
     getMin() {
         let _currentRoot = this.root;
-        while (_currentRoot) {
-            if (_currentRoot.left) {
-                _currentRoot = _currentRoot.left;
-            } else return _currentRoot;
+        // while (_currentRoot) {
+        //     if (_currentRoot.left) {
+        //         _currentRoot = _currentRoot.left;
+        //     } else return _currentRoot;
+        // }
+        while (_currentRoot.left) {
+            _currentRoot = _currentRoot.left;
         }
+        return _currentRoot;
     }
 
     getMax(){

@@ -33,7 +33,7 @@ describe.only('#Llrb', function() {
         tree.insert(8, 'value right');
 
         tree.root.right.key.should.be.eql(8);
-        tree.root.right.value.should.be.eql('value new');
+        tree.root.right.value.should.be.eql('value right');
 
         should(tree.root).be.ok();
     });
@@ -117,7 +117,7 @@ describe.only('#Llrb', function() {
         tree.size().should.be.eql(0);
     });
 
-    it.only('should #find return max element', function() {
+    it('should #find return max element', function() {
         const  tree = new algolib.Llrb();
 
         tree.insert(20, 'value 20');

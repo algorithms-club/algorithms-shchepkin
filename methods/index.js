@@ -6,7 +6,6 @@ let UnionFind = require('./unionFind/unionFind');
 let bitPlusPlus = require('./bitPlusPlus/bitPlusPlus');
 let LinkedList = require('./linkedList/linkedList');
 let SortFunction = require('./sort/sort');
-let RedBlackTree = require('./redBlackTree/redBlackTree');
 let Llrb = require('./redBlackTree/llrb');
 
 let algolib = {
@@ -16,7 +15,6 @@ let algolib = {
     bitPlusPlus,
     LinkedList,
     SortFunction,
-    RedBlackTree,
     Llrb
 };
 
