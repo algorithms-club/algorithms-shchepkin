@@ -1,7 +1,7 @@
 'use strict';
 const algolib = require('../index.js');
 
-class Node{
+class Node {
     constructor(key, value) {
         this.key = key;
         this.value = value;
@@ -13,46 +13,48 @@ class Node{
 
 class Llrb {
 
-    constructor(elements){
+    constructor(elements) {
         this.root = null;
         this.numOfNodes = 0;
 
-        if (elements && elements.length){
-           this._buildFromArray(elements);
+        if (elements && elements.length) {
+            this._buildFromArray(elements);
         }
     }
 
-    _buildFromArray(){}
+    _buildFromArray() {
+    }
 
-    _rotateLeft(node){}
-    _rotateRight(node){}
-    _flipColor(node){}
+    _rotateLeft(node) {
+    }
+
+    _rotateRight(node) {
+    }
+
+    _flipColor(node) {
+    }
 
     _findPlace(node, key) {
-        if (node.key > key) {
-            if (!node.left) {return node;}
+        if (key < node.key && node.left ) {
             return this._findPlace(node.left, key);
-
-        } else if (node.key < key) {
-            if(!node.right){return node;}
+        }else if (key > node.key && node.right) {
             return this._findPlace(node.right, key);
+        }else {
+            return node;
         }
     }
 
-    insert(key, value){
-        if(!this.root){
-            return this.root = new Node (key, value);
+    insert(key, value) {
+        if (!this.root) {
+            return this.root = new Node(key, value);
         }
-
         const parent = this._findPlace(this.root, key);
 
-        if (parent.key < key){
+        if (parent.key < key) {
             parent.right = new Node(key, value);
-
-        }else if (parent.key > key) {
+        } else if (parent.key > key) {
             parent.left = new Node(key, value);
-
-        }else {
+        } else {
             parent.value = value;
         }
 
@@ -62,12 +64,12 @@ class Llrb {
         this.numOfNodes++;
     }
 
-    find(key){
+    find(key) {
         let _currentRoot = this.root;
         while (_currentRoot) {
             if (key > _currentRoot.key) {
                 _currentRoot = _currentRoot.right;
-            } else if (key < _currentRoot.key){
+            } else if (key < _currentRoot.key) {
                 _currentRoot = _currentRoot.left;
             } else return _currentRoot.value;
         }
@@ -75,18 +77,13 @@ class Llrb {
 
     getMin() {
         let _currentRoot = this.root;
-        // while (_currentRoot) {
-        //     if (_currentRoot.left) {
-        //         _currentRoot = _currentRoot.left;
-        //     } else return _currentRoot;
-        // }
         while (_currentRoot.left) {
             _currentRoot = _currentRoot.left;
         }
         return _currentRoot;
     }
 
-    getMax(){
+    getMax() {
         let _currentRoot = this.root;
         while (_currentRoot) {
             if (_currentRoot.right) {
@@ -95,10 +92,10 @@ class Llrb {
         }
     }
 
-    size(){
-        if(this.numOfNodes){
+    size() {
+        if (this.numOfNodes) {
             return this.numOfNodes + 1;
-        }else return this.numOfNodes;
+        } else return this.numOfNodes;
     }
 }
 

@@ -117,7 +117,7 @@ describe.only('#Llrb', function() {
         tree.size().should.be.eql(0);
     });
 
-    it('should #find return max element', function() {
+    it('should #find return value of searching element', function() {
         const  tree = new algolib.Llrb();
 
         tree.insert(20, 'value 20');
@@ -126,11 +126,23 @@ describe.only('#Llrb', function() {
         tree.insert(25, 'value 25');
         tree.insert(27, 'value 27');
         tree.insert(23, 'value 23');
-        tree.insert(17, 'value 17');
-        tree.insert(10, 'value 10');
-        tree.insert(6, 'value 6');
 
         tree.find(27).should.be.eql('value 27');
+        should(tree.root).be.ok();
+    });
+
+    it('should #insert rewrite value of already existing element', function() {
+        const  tree = new algolib.Llrb();
+
+        tree.insert(20, 'value 20');
+        tree.insert(15, 'value 15');
+        tree.insert(30, 'value 30');
+        tree.insert(25, 'value 25');
+        tree.insert(27, 'value 27');
+        tree.insert(23, 'value 23');
+        tree.insert(25, 'value new 25');
+
+        tree.find(25).should.be.eql('value new 25');
         should(tree.root).be.ok();
     });
 
