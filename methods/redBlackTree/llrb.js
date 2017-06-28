@@ -55,7 +55,7 @@ class Llrb {
         } else if (parent.key > key) {
             parent.left = new Node(key, value);
         } else {
-            parent.value = value;
+            return parent.value = value;
         }
 
         //node.right = red --> _leftRotate
@@ -93,7 +93,7 @@ class Llrb {
     }
 
     size() {
-        if (this.numOfNodes) {
+        if (this.numOfNodes || this.root) {
             return this.numOfNodes + 1;
         } else return this.numOfNodes;
     }

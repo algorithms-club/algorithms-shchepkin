@@ -34,7 +34,6 @@ describe.only('#Llrb', function() {
 
         tree.root.right.key.should.be.eql(8);
         tree.root.right.value.should.be.eql('value right');
-
         should(tree.root).be.ok();
     });
 
@@ -60,7 +59,6 @@ describe.only('#Llrb', function() {
         tree.root.left.value.should.be.eql('value left');
         tree.root.right.key.should.be.eql(10);
         tree.root.right.value.should.be.eql('value right');
-        should(tree.root).be.ok();
     });
 
     it('should #getMin return min element', function() {
@@ -78,7 +76,6 @@ describe.only('#Llrb', function() {
 
         tree.getMin().key.should.be.eql(6);
         tree.getMin().value.should.be.eql('value 6');
-        should(tree.root).be.ok();
     });
 
     it('should #getMax return max element', function() {
@@ -96,9 +93,18 @@ describe.only('#Llrb', function() {
 
         tree.getMax().key.should.be.eql(30);
         tree.getMax().value.should.be.eql('value 30');
+    });
 
-        tree.size().should.be.eql(9);
-        should(tree.root).be.ok();
+    it('should #size returns 0 if there is no one element', function() {
+        const  tree = new algolib.Llrb();
+        tree.size().should.be.eql(0);
+    });
+
+    it('should #size returns 1 if there is one element', function() {
+        const  tree = new algolib.Llrb();
+
+        tree.insert(8, 'value 8');
+        tree.size().should.be.eql(1);
     });
 
     it('should #size return 3 if inserted 3 elements', function() {
@@ -112,9 +118,15 @@ describe.only('#Llrb', function() {
         should(tree.root).be.ok();
     });
 
-    it('should #size return 0 if there are no one element', function() {
+    it('should #size return 3 if inserted 3 elements and one of them was rewrote', function() {
         const  tree = new algolib.Llrb();
-        tree.size().should.be.eql(0);
+
+        tree.insert(20, 'value 20');
+        tree.insert(15, 'value 15');
+        tree.insert(30, 'value 30');
+        tree.insert(30, 'value new 30');
+
+        tree.size().should.be.eql(3);
     });
 
     it('should #find return value of searching element', function() {
@@ -145,6 +157,5 @@ describe.only('#Llrb', function() {
         tree.find(25).should.be.eql('value new 25');
         should(tree.root).be.ok();
     });
-
 
 });
