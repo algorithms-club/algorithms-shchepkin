@@ -26,12 +26,27 @@ class Llrb {
     }
 
     _rotateLeft(node) {
+        let _root = node.right;
+        node.right = _root.left;
+        _root.left = node;
+        _root.isRed = node.isRed;
+        node.isRed = true;
+        return _root;
     }
 
     _rotateRight(node) {
+        let _root = node.left;
+        node.left = _root.right;
+        _root.right = node;
+        _root.isRed = node.isRed;
+        node.isRed = true;
+        return _root;
     }
 
     _flipColor(node) {
+        node.isRed = !node.isRed;
+        node.left.isRed = !node.left.isRed;
+        node.right.isRed = !node.right.isRed;
     }
 
     _findPlace(node, key) {
